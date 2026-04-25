@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Dokter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h3>SIRS EMR</h3>
+            <a class="active">Dashboard</a>
+            <a>Pasien</a>
+            <a>Rekam Medis</a>
+
+            <div class="logout">Logout</div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <div>
+                    <h2>Dashboard Dokter</h2>
+                    <p>Selamat datang, dr. Budi</p>
+                </div>
+                <div class="user">Dokter</div>
+            </div>
+
+            <!-- STAT -->
+            <div class="cards">
+
+                <div class="card stat">
+                    <p>Total Pasien</p>
+                    <h2>24</h2>
+                </div>
+
+                <div class="card stat">
+                    <p>Rekam Medis</p>
+                    <h2>12</h2>
+                </div>
+
+                <div class="card stat">
+                    <p>Antrian</p>
+                    <h2>6</h2>
+                </div>
+
+                <div class="card stat">
+                    <p>Jadwal</p>
+                    <h2>8</h2>
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <!-- LEFT TABLE -->
+                <div class="card table-card">
+                    <h4>Daftar Pasien</h4>
+
+                    <table>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Umur</th>
+                            <th>Status</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Rina</td>
+                            <td>28</td>
+                            <td><span class="badge success">Periksa</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Dedi</td>
+                            <td>35</td>
+                            <td><span class="badge warning">Menunggu</span></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <!-- RIGHT FORM -->
+                <div class="card form-card">
+                    <h4>Input Rekam Medis</h4>
+
+                    <label>Keluhan</label>
+                    <textarea></textarea>
+
+                    <label>Diagnosa</label>
+                    <textarea></textarea>
+
+                    <label>Tindakan</label>
+                    <textarea></textarea>
+
+                    <label>Resep</label>
+                    <textarea></textarea>
+
+                    <button class="btn-primary">Simpan</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
