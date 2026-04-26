@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h3>SIRS EMR</h3>
+            <a class="active">Dashboard</a>
+            <a>Pengguna</a>
+            <a>Pasien</a>
+            <a>Laporan</a>
+
+            <div class="logout">Logout</div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <div>
+                    <h2>Dashboard Admin</h2>
+                    <p>Selamat datang, Admin 👋</p>
+                </div>
+
+                <div class="user">
+                    <span>Admin</span>
+                </div>
+            </div>
+
+            <!-- STAT CARDS -->
+            <div class="cards">
+
+                <div class="card stat">
+                    <p>Total Pengguna</p>
+                    <h2>12</h2>
+                </div>
+
+                <div class="card stat">
+                    <p>Total Pasien</p>
+                    <h2>45</h2>
+                </div>
+
+                <div class="card stat">
+                    <p>Rekam Medis</p>
+                    <h2>78</h2>
+                </div>
+
+                <div class="card stat">
+                    <p>Laporan</p>
+                    <h2>5</h2>
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <!-- LEFT -->
+                <div class="card chart">
+                    <h4>Statistik Rekam Medis</h4>
+                    <div class="fake-chart"></div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="card table-card">
+                    <h4>Pengguna Terdaftar</h4>
+
+                    <table>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Admin</td>
+                            <td>Admin</td>
+                            <td><span class="badge success">Aktif</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Dr. Budi</td>
+                            <td>Dokter</td>
+                            <td><span class="badge success">Aktif</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Siti</td>
+                            <td>Perawat</td>
+                            <td><span class="badge danger">Nonaktif</span></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
