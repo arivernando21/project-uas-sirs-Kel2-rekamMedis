@@ -41,4 +41,4 @@ CREATE TABLE rekam_medis (
 );
 
 INSERT INTO user (username, password, nama_lengkap, role) 
-VALUES ('admin', '[HASH]', 'Administrator Utama', 'admin');
+VALUES ('admin', '$2y$10$BQkSNjPcXd6vBcRfUgDqK.DlNWoYEEG9dAM7OXiqLJ7y8SgVqtpVi', 'Administrator Utama', 'admin');
