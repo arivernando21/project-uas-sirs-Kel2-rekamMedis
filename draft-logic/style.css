@@ -89,7 +89,7 @@ input, select {
     width: 100%;
     padding: 12px;
     background: #2A7FFF;
-    border: none;
+    border: 1px solid transparent;
     color: white;
     border-radius: 8px;
     cursor: pointer;
@@ -108,6 +108,7 @@ input, select {
     color: #2A7FFF;
     border-radius: 8px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 /* ===== DIVIDER ===== */
@@ -733,4 +734,396 @@ html, body {
 .summary-item small {
     font-size: 12px;
     color: #999;
+}
+
+/* ===== DASHBOARD DOKTER (tema tetap: biru #2A7FFF, abu #f5f7fa) ===== */
+.page-doctor .sidebar .logout a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.page-doctor .sidebar .logout a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.page-doctor .content {
+    align-items: stretch;
+}
+
+.page-doctor .table-card,
+.page-doctor .form-card--mr {
+    padding: 16px 18px;
+}
+
+.page-doctor .table-card h4,
+.page-doctor .form-card--mr h4 {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.page-doctor .table-card {
+    flex: 1;
+    min-width: 0;
+}
+
+.page-doctor .form-card--mr {
+    flex: 1.5;
+    min-width: 0;
+}
+
+.page-doctor .table-empty {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    padding: 20px 12px !important;
+}
+
+.page-doctor .btn-select {
+    padding: 6px 14px;
+    background-color: #2A7FFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-doctor .btn-select:hover {
+    background-color: #1d5ed8;
+    box-shadow: 0 2px 8px rgba(42, 127, 255, 0.35);
+}
+
+.page-doctor .btn-select:focus-visible {
+    outline: 2px solid #2A7FFF;
+    outline-offset: 2px;
+}
+
+.page-doctor .mr-hint {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 14px;
+    line-height: 1.5;
+}
+
+.page-doctor .mr-hint--active {
+    color: #0d3c91;
+    background: #e9f1ff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border-left: 3px solid #2A7FFF;
+    margin-bottom: 16px;
+}
+
+.page-doctor .mr-form .mr-form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.page-doctor .mr-form .mr-form-row--tight {
+    margin-top: 8px;
+}
+
+.page-doctor .mr-form .mr-field {
+    flex: 1 1 140px;
+    min-width: 0;
+}
+
+.page-doctor .mr-form .mr-field--narrow {
+    flex: 1 1 120px;
+}
+
+.page-doctor .mr-form .mr-field--wide {
+    flex: 2 1 200px;
+}
+
+.page-doctor .mr-form > label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.page-doctor .mr-form-row .mr-field label {
+    display: block;
+    margin: 0 0 6px;
+    font-size: 14px;
+}
+
+.page-doctor .mr-form .input-readonly,
+.page-doctor .mr-form input.input-readonly {
+    background: #eef1f5;
+    color: #444;
+}
+
+.page-doctor .mr-form .input-readonly--selected,
+.page-doctor .mr-form input.input-readonly--selected {
+    background: #e9f1ff;
+    border-color: #b8d4ff;
+}
+
+.page-doctor .mr-form .mr-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 44px;
+    line-height: 1.45;
+}
+
+.page-doctor .mr-form .mr-textarea--sm {
+    min-height: 72px;
+}
+
+.page-doctor .mr-form .mr-textarea--md {
+    min-height: 88px;
+}
+
+.page-doctor .mr-form .btn-primary--block-mr {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 16px;
+    font-weight: 600;
+}
+
+@media (max-width: 960px) {
+    .page-doctor .content {
+        flex-direction: column;
+    }
+
+    .page-doctor .form-card--mr {
+        flex: 1;
+    }
+}
+
+/* =========================================
+   PREMIUM REDESIGN OVERRIDES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --bg: #f4f7fe;
+    --surface: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif !important;
+    background: var(--bg) !important;
+    color: var(--text-main) !important;
+    line-height: 1.6;
+}
+
+/* Sidebar Modernization */
+.sidebar {
+    background: linear-gradient(190deg, #0f172a 0%, #1e293b 100%) !important;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 24px 20px;
+}
+
+.sidebar a {
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sidebar a.active {
+    background: rgba(59, 130, 246, 0.15) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.sidebar a:not(.active):hover {
+    background: rgba(255,255,255,0.05) !important;
+    transform: translateX(4px);
+}
+
+/* Topbar Modernization */
+.topbar {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.02);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    padding: 16px 24px !important;
+    margin: 16px 16px 24px 16px !important;
+    border-radius: 16px !important;
+    position: sticky;
+    top: 16px;
+    z-index: 10;
+}
+
+.topbar-left h2 {
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+    color: var(--text-main) !important;
+}
+
+.avatar {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(59,130,246,0.3);
+}
+
+/* Cards Modernization */
+.card, .stat-card, .table-card, .form-card {
+    background: var(--surface) !important;
+    border: 1px solid rgba(0,0,0,0.03) !important;
+    box-shadow: var(--shadow-soft) !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+    padding: 24px !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* Table Modernization */
+table {
+    border: none !important;
+}
+
+th {
+    background: #f8fafc !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e2e8f0 !important;
+    border: none !important;
+    padding: 16px 12px !important;
+}
+
+td {
+    border: none !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding: 16px 12px !important;
+    color: var(--text-main) !important;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background: #f8fafc !important;
+}
+
+/* Buttons */
+.btn-primary, .page-doctor .btn-select {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.2) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.btn-primary:hover, .page-doctor .btn-select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37,99,235,0.3) !important;
+}
+
+/* Badges */
+.badge {
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    letter-spacing: 0.2px;
+}
+
+/* Form Elements */
+input, select, textarea, .page-doctor .mr-form .mr-textarea {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    padding: 10px 14px !important; /* Slightly reduced padding */
+    font-family: 'Inter', sans-serif !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    background: white !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1) !important;
+    outline: none !important;
+}
+
+/* Fix for side-by-side fields (mr-form-row) */
+.mr-form-row {
+    display: flex !important;
+    gap: 20px !important; /* Increased gap to prevent "nabrak" */
+    margin-bottom: 15px !important;
+    flex-wrap: wrap !important;
+}
+
+.mr-field {
+    flex: 1 1 200px !important;
+    min-width: 0 !important;
+}
+
+.mr-field--narrow {
+    flex: 0 0 150px !important; /* Keep narrow fields narrow */
+}
+
+.mr-field--wide {
+    flex: 2 1 300px !important;
+}
+
+.mr-field label {
+    display: block !important;
+    margin-bottom: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    color: var(--text-main) !important;
+}
+
+/* Layout adjustments */
+.main {
+    background: var(--bg) !important;
+}
+
+.cards {
+    padding: 0 16px;
+}
+
+.content {
+    padding: 0 16px 24px 16px;
+}
+
+/* Specific to doctor's active MR form */
+.page-doctor .mr-hint--active {
+    background: linear-gradient(to right, rgba(59,130,246,0.1), transparent) !important;
+    border-left: 4px solid var(--primary) !important;
+    color: var(--primary-dark) !important;
+    padding: 12px 16px !important;
+}
+
+.form-card--mr {
+    max-width: 900px; /* Prevent the form from being way too wide on large screens */
 }

@@ -61,16 +61,10 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
 
             <!-- LOGO -->
             <div class="sidebar-logo">
-
                 <div class="logo-row">
-                    <div class="logo-icon-box">
-                        <img src="logo.png" alt="logo">
-                    </div>
-                    <h3>SIRS EMR</h3>
+                    <h3>🏥 SIRS EMR</h3>
                 </div>
-
                 <p class="logo-sub">Sistem Informasi Rekam Medis</p>
-
             </div>
 
             <!-- MENU -->
@@ -79,7 +73,7 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
             </a>
 
             <a href="manage_user.php">
-                <span>👥</span> Pengguna
+                <span>👥</span> Manajemen User
             </a>
 
             <a href="patients_list.php">
@@ -88,9 +82,7 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
 
             <!-- LOGOUT -->
             <div class="logout">
-                <a href="../logout.php" style="color:white; text-decoration:none;">
-                    ⬅ Logout
-                </a>
+                <a href="../logout.php">Logout</a>
             </div>
 
         </div>
@@ -105,22 +97,16 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
 
                 <!-- RIGHT -->
                 <div class="topbar-right">
-
-                    <!-- DATE -->
                     <div class="date-box">
-                        📅 <span><?= date('d M Y | H:i') ?></span>
+                        <span>📅</span> <?= date('d M Y | H:i') ?>
                     </div>
-
-                    <!-- USER -->
                     <div class="user-box">
-                        <div class="avatar">👨</div>
                         <div class="user-info">
-                            <strong><?= htmlspecialchars($_SESSION['nama']) ?></strong>
-                            <small><?= ucfirst($_SESSION['role']) ?></small>
-                            <small></small>
+                            <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+                            <small>Administrator</small>
                         </div>
+                        <div class="avatar">👨‍💻</div>
                     </div>
-
                 </div>
 
             </div>

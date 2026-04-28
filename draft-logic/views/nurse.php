@@ -18,26 +18,44 @@ $patients = $pdo->query("SELECT * FROM pasien ORDER BY id_pasien DESC LIMIT 5")-
 </head>
 <body>
     <div class="layout">
-<div class="sidebar">
-    <h3>SIRS EMR</h3>
-        <div class="menu">
-            <a href="nurse.php" class="<?= basename($_SERVER['PHP_SELF']) == 'nurse.php' ? 'active' : '' ?>">Dashboard</a>
-            <a href="patients_list.php" class="<?= basename($_SERVER['PHP_SELF']) == 'patients_list.php' ? 'active' : '' ?>">Pasien</a>
-        </div>
-
-        <div class="logout-container" style="margin-top: auto;">
-            <a href="../logout.php" style="color: #ff4d4d; text-decoration: none; font-weight: bold; padding: 10px; display: block;">
-                Log Out →
+        <div class="sidebar">
+            <!-- LOGO -->
+            <div class="sidebar-logo">
+                <div class="logo-row">
+                    <h3>🏥 SIRS EMR</h3>
+                </div>
+                <p class="logo-sub">Sistem Informasi Rekam Medis</p>
+            </div>
+            
+            <a href="nurse.php" class="active">
+                <span>🏠</span> Dashboard
             </a>
+            <a href="patients_list.php">
+                <span>👤</span> Pasien
+            </a>
+            
+            <div class="logout">
+                <a href="../logout.php">Logout</a>
+            </div>
         </div>
-    </div>
         <div class="main">
             <div class="topbar">
-                <div>
+                <div class="topbar-left">
                     <h2>Dashboard Perawat</h2>
                     <p>Selamat datang, <?= htmlspecialchars($_SESSION['username']) ?></p>
                 </div>
-                <div class="user">Perawat</div>
+                <div class="topbar-right">
+                    <div class="date-box">
+                        <span>📅</span> <?= date('d M Y') ?>
+                    </div>
+                    <div class="user-box">
+                        <div class="user-info">
+                            <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+                            <small>Perawat</small>
+                        </div>
+                        <div class="avatar">👩‍⚕️</div>
+                    </div>
+                </div>
             </div>
 
             <div class="cards">

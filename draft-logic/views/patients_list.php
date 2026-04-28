@@ -33,10 +33,7 @@ $patients = $pdo->query("SELECT * FROM pasien ORDER BY nama ASC")->fetchAll();
             <div class="sidebar-logo">
 
                 <div class="logo-row">
-                    <div class="logo-icon-box">
-                        <img src="logo.png" alt="logo">
-                    </div>
-                    <h3>SIRS EMR</h3>
+                    <h3>🏥 SIRS EMR</h3>
                 </div>
 
                 <p class="logo-sub">Sistem Informasi Rekam Medis</p>
@@ -52,8 +49,28 @@ $patients = $pdo->query("SELECT * FROM pasien ORDER BY nama ASC")->fetchAll();
             <div class="logout"><a href="../logout.php" style="color:white; text-decoration:none;">Logout</a></div>
         </div>
         <div class="main">
-            <div class="card table-card">
-                <h4>Data Seluruh Pasien</h4>
+            <div class="topbar">
+                <div class="topbar-left">
+                    <h2>Daftar Pasien</h2>
+                    <p>Daftar seluruh pasien terdaftar dalam sistem.</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="date-box">
+                        <span>📅</span> <?= date('d M Y') ?>
+                    </div>
+                    <div class="user-box">
+                        <div class="user-info">
+                            <strong><?= htmlspecialchars($_SESSION['username'] ?? 'User') ?></strong>
+                            <small><?= ucfirst(htmlspecialchars($_SESSION['role'] ?? 'Guest')) ?></small>
+                        </div>
+                        <div class="avatar">👨‍⚕️</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="card table-card">
+                    <h4>Data Seluruh Pasien</h4>
                 <table>
                     <tr>
                         <th>No</th>
@@ -77,6 +94,7 @@ $patients = $pdo->query("SELECT * FROM pasien ORDER BY nama ASC")->fetchAll();
                     <?php endforeach; ?>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 </body>

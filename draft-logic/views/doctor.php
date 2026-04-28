@@ -21,39 +21,48 @@ $pasien_list = $pdo->query("SELECT k.id_kunjungan, p.nama, p.tanggal_lahir, k.st
     <meta charset="UTF-8">
     <title>Dashboard Dokter</title>
     <link rel="stylesheet" href="../style.css">
-    <style>
-        .btn-select {
-            padding: 5px 10px;
-            background-color: #2A7FFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .btn-select:hover {
-            background-color: #1d5ed8;
-        }
-    </style>
 </head>
-<body>
+<body class="page-doctor">
     <div class="layout">
         <div class="sidebar">
-            <h3>SIRS EMR</h3>
-            <a class="active">Dashboard</a>
-            <a href="patients_list.php">Pasien</a>
+            <!-- LOGO -->
+            <div class="sidebar-logo">
+                <div class="logo-row">
+                    <h3>🏥 SIRS EMR</h3>
+                </div>
+                <p class="logo-sub">Sistem Informasi Rekam Medis</p>
+            </div>
+            
+            <a class="active">
+                <span>🏠</span> Dashboard
+            </a>
+            <a href="patients_list.php">
+                <span>👤</span> Pasien
+            </a>
+            
             <div class="logout">
-                <a href="../logout.php" style="color:white; text-decoration:none;">Logout</a>
+                <a href="../logout.php">Logout</a>
             </div>
         </div>
 
         <div class="main">
             <div class="topbar">
-                <div>
+                <div class="topbar-left">
                     <h2>Dashboard Dokter</h2>
                     <p>Selamat datang, <?= htmlspecialchars($_SESSION['username']) ?></p>
                 </div>
-                <div class="user">Dokter</div>
+                <div class="topbar-right">
+                    <div class="date-box">
+                        <span>📅</span> <?= date('d M Y') ?>
+                    </div>
+                    <div class="user-box">
+                        <div class="user-info">
+                            <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+                            <small>Dokter</small>
+                        </div>
+                        <div class="avatar">👨‍⚕️</div>
+                    </div>
+                </div>
             </div>
 
             <div class="cards">
@@ -82,7 +91,7 @@ $pasien_list = $pdo->query("SELECT k.id_kunjungan, p.nama, p.tanggal_lahir, k.st
                         <tbody>
                             <?php if (empty($pasien_list)): ?>
                                 <tr>
-                                    <td colspan="4" style="text-align:center;">Tidak ada antrian aktif.</td>
+                                    <td colspan="4" class="table-empty">Tidak ada antrian aktif.</td>
                                 </tr>
                             <?php endif; ?>
                             <?php $no = 1; foreach ($pasien_list as $pl): ?>
@@ -95,8 +104,9 @@ $pasien_list = $pdo->query("SELECT k.id_kunjungan, p.nama, p.tanggal_lahir, k.st
                                     </span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn-select" 
-                                            onclick="pilihPasien('<?= $pl['id_kunjungan'] ?>', '<?= htmlspecialchars($pl['nama']) ?>')">
+                                    <button type="button" class="btn-select js-pilih-pasien"
+                                            data-id="<?= htmlspecialchars((string) $pl['id_kunjungan'], ENT_QUOTES, 'UTF-8') ?>"
+                                            data-nama="<?= htmlspecialchars($pl['nama'], ENT_QUOTES, 'UTF-8') ?>">
                                         Pilih
                                     </button>
                                 </td>
@@ -106,54 +116,55 @@ $pasien_list = $pdo->query("SELECT k.id_kunjungan, p.nama, p.tanggal_lahir, k.st
                     </table>
                 </div>
 
-                <div class="card form-card" style="flex: 1.5;"> <h4>Form Input Lengkap Rekam Medis</h4>
-                    <p id="label-pasien" style="font-size: 13px; color: #666; margin-bottom: 10px;">
+                <div class="card form-card form-card--mr">
+                    <h4>Form Input Lengkap Rekam Medis</h4>
+                    <p id="label-pasien" class="mr-hint">
                         Pilih pasien dari antrian untuk memulai...
                     </p>
 
-                    <form action="../functions/medical_record.php" method="POST">
-                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                            <div style="flex: 1;">
-                                <label>ID Kunjungan</label>
-                                <input type="text" id="input_id_kunjungan" name="id_kunjungan" readonly required style="background: #eee;">
+                    <form class="mr-form" action="../functions/medical_record.php" method="POST">
+                        <div class="mr-form-row">
+                            <div class="mr-field">
+                                <label for="input_id_kunjungan">ID Kunjungan</label>
+                                <input type="text" id="input_id_kunjungan" name="id_kunjungan" readonly required class="input-readonly">
                             </div>
-                            <div style="flex: 1;">
-                                <label>ID Dokter (Pemeriksa)</label>
-                                <input type="text" name="id_user" value="<?= $_SESSION['id_user'] ?>" readonly style="background: #eee;">
+                            <div class="mr-field">
+                                <label for="input_id_user">ID Dokter (Pemeriksa)</label>
+                                <input type="text" id="input_id_user" name="id_user" value="<?= $_SESSION['id_user'] ?>" readonly class="input-readonly">
                             </div>
                         </div>
 
-                        <label>Keluhan Pasien</label>
-                        <textarea name="keluhan" placeholder="Tulis keluhan utama pasien..." required style="height: 50px;"></textarea>
+                        <label for="textarea-keluhan">Keluhan Pasien</label>
+                        <textarea id="textarea-keluhan" name="keluhan" class="mr-textarea mr-textarea--md" placeholder="Tulis keluhan utama pasien..." required></textarea>
 
-                        <div style="display: flex; gap: 10px; margin-top: 10px;">
-                            <div style="flex: 1;">
+                        <div class="mr-form-row mr-form-row--tight">
+                            <div class="mr-field mr-field--narrow">
                                 <label>Kode ICD-10</label>
                                 <input type="text" name="icd10_code" placeholder="Contoh: A00.0">
                             </div>
-                            <div style="flex: 2;">
+                            <div class="mr-field mr-field--wide">
                                 <label>Nama Diagnosa (ICD-10 Name)</label>
                                 <input type="text" name="icd10_nama" placeholder="Nama penyakit sesuai kode">
                             </div>
                         </div>
-                        <textarea name="diagnosa" placeholder="Catatan diagnosa tambahan..." style="height: 40px; margin-top: 5px;"></textarea>
+                        <textarea name="diagnosa" class="mr-textarea mr-textarea--sm" placeholder="Catatan diagnosa tambahan..."></textarea>
 
-                        <div style="display: flex; gap: 10px; margin-top: 10px;">
-                            <div style="flex: 1;">
+                        <div class="mr-form-row mr-form-row--tight">
+                            <div class="mr-field mr-field--narrow">
                                 <label>Kode ICD-9</label>
                                 <input type="text" name="icd9_code" placeholder="Contoh: 87.44">
                             </div>
-                            <div style="flex: 2;">
+                            <div class="mr-field mr-field--wide">
                                 <label>Nama Tindakan (ICD-9 Name)</label>
                                 <input type="text" name="icd9_nama" placeholder="Nama prosedur/tindakan">
                             </div>
                         </div>
-                        <textarea name="tindakan" placeholder="Detail tindakan medis yang dilakukan..." style="height: 40px; margin-top: 5px;"></textarea>
+                        <textarea name="tindakan" class="mr-textarea mr-textarea--sm" placeholder="Detail tindakan medis yang dilakukan..."></textarea>
 
-                        <label style="margin-top: 10px;">Resep Obat</label>
-                        <textarea name="resep" placeholder="Contoh: Paracetamol 500mg 3x1 hari" style="height: 50px;"></textarea>
+                        <label for="textarea-resep">Resep Obat</label>
+                        <textarea id="textarea-resep" name="resep" class="mr-textarea mr-textarea--md" placeholder="Contoh: Paracetamol 500mg 3x1 hari"></textarea>
 
-                        <button type="submit" class="btn-primary" style="margin-top: 15px; width: 100%;">
+                        <button type="submit" class="btn-primary btn-primary--block-mr">
                             Simpan & Selesaikan Pemeriksaan
                         </button>
                     </form>
@@ -164,12 +175,23 @@ $pasien_list = $pdo->query("SELECT k.id_kunjungan, p.nama, p.tanggal_lahir, k.st
 
     <script>
     function pilihPasien(id, nama) {
-        document.getElementById('input_id_kunjungan').value = id;
-        
-        document.getElementById('label-pasien').innerHTML = "Memproses pasien: <strong>" + nama + "</strong>";
-        
-        document.getElementById('input_id_kunjungan').style.backgroundColor = "#e9f1ff";
+        var inputKj = document.getElementById('input_id_kunjungan');
+        var label = document.getElementById('label-pasien');
+        inputKj.value = id;
+        label.classList.add('mr-hint--active');
+        label.textContent = '';
+        var t = document.createTextNode('Memproses pasien: ');
+        var s = document.createElement('strong');
+        s.textContent = nama;
+        label.appendChild(t);
+        label.appendChild(s);
+        inputKj.classList.add('input-readonly--selected');
     }
+    document.querySelectorAll('.js-pilih-pasien').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            pilihPasien(this.getAttribute('data-id'), this.getAttribute('data-nama'));
+        });
+    });
     </script>
 </body>
 </html>

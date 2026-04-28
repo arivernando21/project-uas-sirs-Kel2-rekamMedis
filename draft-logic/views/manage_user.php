@@ -27,16 +27,10 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
         <div class="sidebar">
             <!-- LOGO -->
             <div class="sidebar-logo">
-
                 <div class="logo-row">
-                    <div class="logo-icon-box">
-                        <img src="logo.png" alt="logo">
-                    </div>
-                    <h3>SIRS EMR</h3>
+                    <h3>🏥 SIRS EMR</h3>
                 </div>
-
                 <p class="logo-sub">Sistem Informasi Rekam Medis</p>
-
             </div>
 
             <a href="admin.php">
@@ -46,15 +40,33 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
             <a href="manage_user.php" class="active">
                 <span>👥</span> Manajemen User
             </a>
-            <div class="logout"><a href="../logout.php" style="color:white; text-decoration:none;">Logout</a></div>
+
+            <a href="patients_list.php">
+                <span>👤</span> Pasien
+            </a>
+
+            <div class="logout">
+                <a href="../logout.php">Logout</a>
+            </div>
         </div>
 
         <div class="main">
             <div class="topbar">
-                <div>
+                <div class="topbar-left">
                     <h2>Manajemen Pengguna</h2>
-                    <p><?= $user_to_edit ? "Edit data pengguna: " . htmlspecialchars($user_to_edit['username']) : "Kelola akses dokter, perawat, dan administrator." ?>
-                    </p>
+                    <p><?= $user_to_edit ? "Edit data pengguna: " . htmlspecialchars($user_to_edit['username']) : "Kelola akses dokter, perawat, dan administrator." ?></p>
+                </div>
+                <div class="topbar-right">
+                    <div class="date-box">
+                        <span>📅</span> <?= date('d M Y') ?>
+                    </div>
+                    <div class="user-box">
+                        <div class="user-info">
+                            <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+                            <small>Administrator</small>
+                        </div>
+                        <div class="avatar">👨‍💻</div>
+                    </div>
                 </div>
             </div>
 
