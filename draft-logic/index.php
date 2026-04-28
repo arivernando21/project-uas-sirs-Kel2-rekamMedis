@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Login EMR</title>
-    <link rel="stylesheet" href="/SIRS-PROJECT/draft-logic/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
