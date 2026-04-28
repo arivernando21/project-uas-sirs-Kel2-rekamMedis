@@ -76,7 +76,7 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
                 <span>👥</span> Manajemen User
             </a>
 
-            <a href="patients_list.php">
+            <a href="patients_list_f_admin.php">
                 <span>👤</span> Pasien
             </a>
 
@@ -102,7 +102,7 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
                     </div>
                     <div class="user-box">
                         <div class="user-info">
-                            <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+                            <strong><?= htmlspecialchars($_SESSION['nama']) ?></strong>
                             <small>Administrator</small>
                         </div>
                         <div class="avatar">👨‍💻</div>
@@ -139,7 +139,7 @@ $pasien_baru = $pasien_baru_stmt->fetchColumn();
                         </div>
                     </div>
 
-                    <a href="patients_list.php" class="detail-link">Lihat detail →</a>
+                    <a href="patients_list_f_admin.php" class="detail-link">Lihat detail →</a>
                 </div>
 
                 <!-- REKAM MEDIS -->
