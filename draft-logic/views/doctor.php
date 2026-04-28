@@ -36,7 +36,8 @@ $pasien_list = $pdo->query("SELECT k.id_kunjungan, p.nama, p.tanggal_lahir, k.st
             <a class="active">
                 <span>🏠</span> Dashboard
             </a>
-            <a href="patients_list.php">
+
+            <a href="patient_list_f_doctor.php">
                 <span>👤</span> Pasien
             </a>
             
