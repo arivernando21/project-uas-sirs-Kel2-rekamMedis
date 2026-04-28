@@ -5,13 +5,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once '../config/database.php';
 require_once '../functions/auth.php';
-checkAccess(['dokter', 'admin', 'perawat']);
+checkAccess(['perawat']);
 
 $dashboardLink = match ($_SESSION['role']) {
-    'admin' => 'admin.php',
-    'dokter' => 'doctor.php',
     'perawat' => 'nurse.php',
-    default => '../index.php'
+    default => 'nurse.php'
 };
 
 $patients = $pdo->query("SELECT * FROM pasien ORDER BY nama ASC")->fetchAll();
@@ -39,7 +37,7 @@ $patients = $pdo->query("SELECT * FROM pasien ORDER BY nama ASC")->fetchAll();
                 <p class="logo-sub">Sistem Informasi Rekam Medis</p>
 
             </div>
-            <a href="<?= $dashboardLink ?>">
+            <a href="nurse.php">
                 <span>🏠</span> Dashboard
             </a>
 
