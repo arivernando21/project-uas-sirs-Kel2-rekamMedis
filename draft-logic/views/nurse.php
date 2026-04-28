@@ -1,8 +1,7 @@
 <?php
-session_start();
 require_once '../config/database.php';
 require_once '../functions/auth.php';
-checkAccess(['perawat', 'admin']);
+checkAccess(['perawat']);
 
 $p_stmt = $pdo->query("SELECT COUNT(*) FROM pasien");
 $total_pasien = $p_stmt->fetchColumn();
