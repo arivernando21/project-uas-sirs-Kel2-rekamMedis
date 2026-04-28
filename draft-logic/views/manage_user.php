@@ -3,6 +3,8 @@ require_once '../config/database.php';
 require_once '../functions/auth.php';
 checkAccess(['admin']);
 
+date_default_timezone_set('Asia/Jakarta');
+
 $user_to_edit = null;
 if (isset($_GET['edit_id'])) {
     $stmt = $pdo->prepare("SELECT * FROM user WHERE id_user = ?");
@@ -23,7 +25,7 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
 
 <body>
     <div class="layout">
-        
+
         <div class="sidebar">
             <!-- LOGO -->
             <div class="sidebar-logo">
@@ -41,7 +43,7 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
                 <span>👥</span> Manajemen User
             </a>
 
-            <a href="patients_list.php">
+            <a href="patients_list_f_admin.php">
                 <span>👤</span> Pasien
             </a>
 
@@ -52,22 +54,27 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
 
         <div class="main">
             <div class="topbar">
+
+                <!-- LEFT -->
                 <div class="topbar-left">
-                    <h2>Manajemen Pengguna</h2>
-                    <p><?= $user_to_edit ? "Edit data pengguna: " . htmlspecialchars($user_to_edit['username']) : "Kelola akses dokter, perawat, dan administrator." ?></p>
+                    <h2>Dashboard Admin</h2>
+                    <p>Selamat datang, <?= htmlspecialchars($_SESSION['username']) ?> 👋</p>
                 </div>
+
+                <!-- RIGHT -->
                 <div class="topbar-right">
                     <div class="date-box">
-                        <span>📅</span> <?= date('d M Y') ?>
+                        <span>📅</span> <?= date('d M Y | H:i') ?>
                     </div>
                     <div class="user-box">
                         <div class="user-info">
-                            <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+                            <strong><?= htmlspecialchars($_SESSION['nama']) ?></strong>
                             <small>Administrator</small>
                         </div>
                         <div class="avatar">👨‍💻</div>
                     </div>
                 </div>
+
             </div>
 
             <div class="content">
@@ -102,7 +109,7 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
                                 <?= $user_to_edit ? "Update Data" : "Simpan Pengguna" ?>
                             </button>
                             <?php if ($user_to_edit): ?>
-                                <a href="manage_user.php" class="btn-outline"
+                                <a href="manage_user.php" class="btn-outline btn-cancel"
                                     style="text-decoration: none; text-align: center; line-height: 35px; height: 35px;">Batal</a>
                             <?php endif; ?>
                         </div>
@@ -140,6 +147,19 @@ $users = $pdo->query("SELECT * FROM user ORDER BY role ASC, username ASC")->fetc
             </div>
         </div>
     </div>
+    <script>
+        const chartLabels = [
+            <?php foreach ($data_chart as $d): ?>
+                                "<?= date('d M', strtotime($d['tanggal'])) ?>",
+            <?php endforeach; ?>
+        ];
+
+        const chartData = [
+            <?php foreach ($data_chart as $d): ?>
+                                <?= $d['total'] ?>,
+            <?php endforeach; ?>
+        ];
+    </script>
 </body>
 
 </html>
